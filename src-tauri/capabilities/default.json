@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "No Tauri commands are exposed to any window: every app window talks to the Node sidecar over loopback HTTP, never to Tauri IPC.",
+  "windows": [],
+  "permissions": []
+}
