@@ -1,0 +1,335 @@
+{
+  "$schema": "./chain.schema.json",
+  "chainVersion": "1.0.0",
+  "org": "ZYDRAXYL",
+  "self": "RUT",
+  "branch": "claude/dracondex-multi-repo-arch-p3mw47",
+  "repos": {
+    "APP": {
+      "repo": "DraconDex-APP",
+      "role": "hub",
+      "private": true,
+      "owns": [
+        ".claude/",
+        "chain/",
+        "docs/",
+        "process/",
+        "tools/"
+      ],
+      "releases": null,
+      "versionSource": null
+    },
+    "SDB": {
+      "repo": "DraconDex-SDB",
+      "role": "schema",
+      "private": false,
+      "owns": [
+        "schema/",
+        "supabase/",
+        "assets/",
+        "generated/"
+      ],
+      "releases": "sdb-v*",
+      "versionSource": "sdb.json#sdbVersion"
+    },
+    "TRX": {
+      "repo": "DraconDex-TRX",
+      "role": "service",
+      "private": false,
+      "owns": [
+        "netlify/",
+        "public/",
+        "netlify.toml"
+      ],
+      "releases": null,
+      "versionSource": "package.json#version"
+    },
+    "EXE": {
+      "repo": "DraconDex-EXE",
+      "role": "app",
+      "private": true,
+      "owns": [
+        "electron/"
+      ],
+      "releases": "v*",
+      "versionSource": "package.json#version"
+    },
+    "APK": {
+      "repo": "DraconDex-APK",
+      "role": "app",
+      "private": true,
+      "owns": [
+        "flutter/"
+      ],
+      "releases": "flutter-v*",
+      "versionSource": "flutter/pubspec.yaml#version"
+    },
+    "PWA": {
+      "repo": "DraconDex-PWA",
+      "role": "build",
+      "private": false,
+      "owns": [
+        "tools/",
+        "shim/",
+        "dist/"
+      ],
+      "releases": null,
+      "versionSource": "package.json#version"
+    },
+    "PKG": {
+      "repo": "DraconDex-PKG",
+      "role": "content",
+      "private": false,
+      "owns": [
+        "packages/",
+        "index.json"
+      ],
+      "releases": "pkg-v*",
+      "versionSource": "package.json#version"
+    },
+    "WEB": {
+      "repo": "DraconDex-WEB",
+      "role": "site",
+      "private": false,
+      "owns": [
+        "*.html",
+        "assets/"
+      ],
+      "releases": "mirror",
+      "versionSource": null
+    },
+    "PGI": {
+      "repo": "DraconDex-PGI-Template",
+      "role": "template",
+      "private": false,
+      "owns": [
+        "dracondex-plugin.json",
+        "index.html",
+        "app.js",
+        "style.css",
+        ".dracondex"
+      ],
+      "releases": null,
+      "versionSource": "dracondex-plugin.json#version"
+    },
+    "EXT": {
+      "repo": "DraconDex-EXT-Template",
+      "role": "template",
+      "private": false,
+      "owns": [
+        "dracondex-plugin.json",
+        "index.html",
+        "panel.html",
+        "app.js",
+        "style.css",
+        ".dracondex"
+      ],
+      "releases": null,
+      "versionSource": "dracondex-plugin.json#version"
+    },
+    "RUT": {
+      "repo": "DraconDex-RUT",
+      "role": "app",
+      "private": false,
+      "owns": [
+        "src-tauri/",
+        "sidecar/",
+        "assets/",
+        "test/"
+      ],
+      "releases": null,
+      "versionSource": "package.json#version"
+    }
+  },
+  "chains": {
+    "exe": [
+      "APP",
+      [
+        "SDB",
+        "TRX"
+      ],
+      "EXE",
+      [
+        "PKG",
+        "WEB",
+        "PWA"
+      ],
+      [
+        "PGI",
+        "EXT"
+      ]
+    ],
+    "apk": [
+      "APP",
+      [
+        "SDB",
+        "TRX"
+      ],
+      "APK",
+      [
+        "PKG",
+        "WEB",
+        "PWA"
+      ],
+      [
+        "PGI",
+        "EXT"
+      ]
+    ],
+    "pwa": [
+      "APP",
+      [
+        "SDB",
+        "TRX"
+      ],
+      [
+        "EXE",
+        "APK"
+      ],
+      "PWA",
+      "WEB",
+      [
+        "PGI",
+        "EXT"
+      ]
+    ],
+    "rut": [
+      "APP",
+      [
+        "SDB",
+        "TRX"
+      ],
+      "EXE",
+      "RUT"
+    ]
+  },
+  "edges": [
+    {
+      "from": "APP",
+      "to": "SDB",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "EXE",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "APK",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "PWA",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "PKG",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "WEB",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "TRX",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "PGI",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "EXT",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "APP",
+      "to": "RUT",
+      "carries": "claude-tooling"
+    },
+    {
+      "from": "SDB",
+      "to": "EXE",
+      "carries": "generated-schema"
+    },
+    {
+      "from": "SDB",
+      "to": "APK",
+      "carries": "generated-schema"
+    },
+    {
+      "from": "TRX",
+      "to": "EXE",
+      "carries": "transfer-api"
+    },
+    {
+      "from": "TRX",
+      "to": "APK",
+      "carries": "transfer-api"
+    },
+    {
+      "from": "EXE",
+      "to": "PKG",
+      "carries": "package-targets"
+    },
+    {
+      "from": "APK",
+      "to": "PKG",
+      "carries": "package-targets"
+    },
+    {
+      "from": "EXE",
+      "to": "WEB",
+      "carries": "release-mirror"
+    },
+    {
+      "from": "APK",
+      "to": "WEB",
+      "carries": "release-mirror"
+    },
+    {
+      "from": "EXE",
+      "to": "PWA",
+      "carries": "app-source"
+    },
+    {
+      "from": "APK",
+      "to": "PWA",
+      "carries": "app-source"
+    },
+    {
+      "from": "PWA",
+      "to": "WEB",
+      "carries": "app-source"
+    },
+    {
+      "from": "EXE",
+      "to": "RUT",
+      "carries": "app-source"
+    },
+    {
+      "from": "EXE",
+      "to": "PGI",
+      "carries": "plugin-contract"
+    },
+    {
+      "from": "EXE",
+      "to": "EXT",
+      "carries": "plugin-contract"
+    }
+  ],
+  "propagation": {
+    "mode": "pull-request",
+    "label": "chained-update",
+    "tokenSecret": "CHAIN_TOKEN",
+    "trailerPrefix": "Chained-From",
+    "syncState": "chain/.chain-sync.json"
+  }
+}

@@ -2,13 +2,16 @@
   "name": "dracondex-rut",
   "private": true,
   "version": "0.1.0",
-  "description": "DraconDex on Tauri — runs DraconDex-EXE's renderer and main process in a Tauri shell",
+  "description": "DraconDex on Tauri \u2014 runs DraconDex-EXE's renderer and main process in a Tauri shell",
   "license": "MIT",
   "scripts": {
     "dev": "tauri dev",
     "build": "tauri build",
     "icons": "tauri icon assets/DraconDex_Tauri.png -o src-tauri/icons",
-    "test": "node test/smoke.mjs"
+    "test": "node test/smoke.mjs",
+    "chain": "node tools/chain-lib.mjs",
+    "chain:survey": "node tools/chain-survey.mjs",
+    "chain:propagate": "node tools/chain-propagate.mjs"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.9.0"
